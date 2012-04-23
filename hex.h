@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 static inline unsigned char* hex(unsigned char* s, size_t s_len, unsigned char* r) {
-    static const unsigned char hex_strings[] = "0123456789abcdfe";
+    static const unsigned char hex_strings[] = "0123456789abcdef";
     int i;
 
     for (i = 0; i < s_len; i++) {
