@@ -12,5 +12,4 @@ build_test: test.o
 
 clean:
 	rm -f *.o
-	rm -f test_request
-	rm -f test_response
+	rm -f test
