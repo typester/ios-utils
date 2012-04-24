@@ -1,10 +1,16 @@
+#include "TargetConditionals.h"
+
 #include <assert.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <ifaddrs.h>
 #include <net/if_dl.h>
-#include <net/if_types.h>
+#if TARGET_OS_IPHONE
+#  define IFT_ETHER 0x6 /* Ethernet CSMACD */
+#else
+#  include <net/if_types.h>
+#endif
 #include <string.h>
 
 static inline size_t macaddress(const char* if_name, unsigned char** result) {
