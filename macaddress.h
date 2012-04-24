@@ -18,7 +18,7 @@ static inline size_t macaddress(const char* if_name, unsigned char** result) {
     assert(0 == r);
 
     addr = addrs;
-    do {
+    while (addr) {
         if (0 != strncmp(if_name, addr->ifa_name, strlen(if_name)))
             continue;
 
@@ -39,7 +39,9 @@ static inline size_t macaddress(const char* if_name, unsigned char** result) {
                 break;
             }
         }
-    } while (addr = addr->ifa_next);
+
+        addr = addr->ifa_next;
+    }
 
     freeifaddrs(addrs);
 
