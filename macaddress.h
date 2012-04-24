@@ -19,8 +19,10 @@ static inline size_t macaddress(const char* if_name, unsigned char** result) {
 
     addr = addrs;
     while (addr) {
-        if (0 != strncmp(if_name, addr->ifa_name, strlen(if_name)))
+        if (0 != strncmp(if_name, addr->ifa_name, strlen(if_name))) {
+            addr = addr->ifa_next;
             continue;
+        }
 
         if (addr->ifa_addr->sa_family == AF_LINK) {
             dladdr = (const struct sockaddr_dl*)addr->ifa_addr;
